@@ -1,4 +1,4 @@
-FROM php:8.4-alpine3.22
+FROM dunglas/frankenphp:1-php8.4-alpine
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_MEMORY_LIMIT=-1
@@ -33,4 +33,6 @@ RUN apk add --no-cache curl unzip && \
     -o /usr/local/bin/protoc-gen-php \
     && chmod +x /usr/local/bin/protoc-gen-php
 
-WORKDIR /app
+EXPOSE 8000
+
+ENTRYPOINT ["php", "artisan", "octane:frankenphp", "--host", "0.0.0.0"]
