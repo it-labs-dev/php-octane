@@ -31,7 +31,10 @@ RUN apk add --no-cache curl unzip && \
     rm "protoc-${PROTOC_VERSION}-linux-x86_64.zip" && \
     curl -L https://github.com/thesis-php/protoc-plugin/releases/download/${PROTOC_PLUGIN_VERSION}/protoc-gen-php \
     -o /usr/local/bin/protoc-gen-php \
-    && chmod +x /usr/local/bin/protoc-gen-php
+    && chmod +x /usr/local/bin/protoc-gen-php  \
+    && curl -L https://github.com/php/frankenphp/releases/download/v1.13.4/frankenphp-linux-x86_64 \
+    -o /usr/local/bin/frankenphp \
+    && chmod +x /usr/local/bin/frankenphp
 
 EXPOSE 8000
 
